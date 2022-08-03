@@ -72,20 +72,22 @@ def projetoProdutos():
     
 def updateProjetoProdutos(projeto_id,codproduto,codproduto_clas,preco,qtd):
     con = conn()
-    print("PROJETO_PRODUTOS: ", projeto_id, codproduto, codproduto_clas, preco)
+    print("PROJETO_PRODUTOS: ", projeto_id, codproduto, codproduto_clas, preco,qtd)
     sql = """
     update projetos_produtos set 
         unitario = '""" + str(preco) + """',
-        valor = '""" + str(round(float(preco)*float(qtd),2)) + """' ,
-        total = '""" + str(round(float(preco)*float(qtd),2)) + """' ,
+        valor = '""" + str(round(float(preco)*float(qtd),4)) + """' ,
+        total = '""" + str(round(float(preco)*float(qtd),4)) + """' ,
         custo_unitario = '""" + str(float(preco)) + """' ,
-        total_custo = '""" + str(round(float(preco)*float(qtd),2)) + """'
+        total_custo = '""" + str(round(float(preco)*float(qtd),4)) + """'
 
     where 
         (select p.codstatus from projetos p where p.projeto_id = """ + str(projeto_id) + """) = '1' and
         projeto_id = """ + str(projeto_id) + """ and
         codproduto = """ + str(codproduto) + """ and
-        codproduto_clas = """ + str(codproduto_clas)
+        codproduto_clas = """ + str(codproduto_clas) + """ and
+        qtd = """ + str(qtd)
+    
         
     cur = con.cursor()
     cur.execute(sql)
