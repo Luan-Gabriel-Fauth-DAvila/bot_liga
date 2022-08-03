@@ -3,7 +3,7 @@ import fdb
 def conn():
     conn = fdb.connect(
         host='127.0.0.1',
-        database='C:/Ultra/Banco/liga.fdb',
+        database='C:/Ultra/Banco/Gestao - Liga.fdb',
         user='SYSDBA',
         password='masterkey',
         port=3050,
