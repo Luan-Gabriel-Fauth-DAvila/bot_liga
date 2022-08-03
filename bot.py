@@ -12,7 +12,7 @@ def precosParaCompras():
                 novo_preco = 0
             else:
                 insertPrecoComprasParaProduto(c[1],c[2],c[5],1)
-                updateProjetoProdutos(c[0],c[1],c[2],c[5],c[7])
+                updateProjetoProdutos(c[0],c[1],c[2],c[4],c[6])
 
 while True:
     precosParaCompras()
